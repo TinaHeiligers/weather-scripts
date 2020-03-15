@@ -1,7 +1,8 @@
-const Dotenv = require('dotenv');
+const { config } = require('dotenv');
 const DarkSky = require('dark-sky');
+const fs = require('file-system')
 
-Dotenv.config({ path: `${__dirname}/.env` });
+config({ path: `${__dirname}/.env` });
 
 const darkSky = new DarkSky(process.env.DARK_SKY);
 
@@ -12,7 +13,7 @@ function getDates() {
   let d = new Date();
   const dateRanges = [];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 8; i++) {
     d.setDate(d.getDate() - 1);
     dateRanges.push(d.toISOString().slice(0, 10))
   }
@@ -25,7 +26,6 @@ function getWeatherData() {
   const weatherDataPromises = [];
 
   for (let i = 0; i <= dates.length; i++) {
-    console.log(dates[i]);
     weatherDataPromises.push(darkSky
       .latitude(lat.toString())
       .longitude(long)
@@ -37,9 +37,13 @@ function getWeatherData() {
   return weatherDataPromises;
 }
 
-const promises = getWeatherData();
+function runGetAndWriteWeatherData() {
+  const promises = getWeatherData();
 
-Promise.all(promises).then(results => console.log(results));
+  Promise.all(promises).then(results => {
+    fs.writeFile('./data/data_1.json', JSON.stringify(results, null, 2));
+    console.log(results)
+  })
+};
 
-
-
+return runGetAndWriteWeatherData();

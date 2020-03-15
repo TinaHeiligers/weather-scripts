@@ -5,12 +5,14 @@
   "main": "collector.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "runscript": "node collector.js"
+    "runscript": "node -e 'require(\"./someFile\").someFunction()'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dark-sky": "^1.1.5",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "file-system": "^2.2.2",
+    "readline": "^1.3.0"
   }
 }
