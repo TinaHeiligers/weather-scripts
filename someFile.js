@@ -1,9 +1,5 @@
 const readline = require('readline');
 
-
-// module.exports.someFunction = function () {
-
-
 const askForStartDate = (rl) => {
   return new Promise((resolve, reject) => {
     rl.question('Enter start date in the format yyyy-mm-dd: ', (answer) => {
@@ -37,7 +33,8 @@ const main = async () => {
   if (startDate.length && endDate) {
     console.log('have them both')
   }
-  rl.close()
+  rl.close();
+  // TODO: take the start and end dates and use them in the collector script.
 }
 main();
 
