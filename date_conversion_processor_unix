@@ -1,0 +1,86 @@
+{
+  "description" : "unix_conversion",
+  "processors" : [
+    {
+      "date" : {
+        "field" : "currently.time",
+        "target_field" : "date",
+        "formats" : ["yyyy-MM-dd"],
+        "timezone" : "Phoenix/Arizona"
+      }
+    }
+  ]
+}
+
+{
+  "description" : "unix_conversion",
+  "processors" : [
+    {
+      "date" : {
+        "field" : "apparentTemperatureHighTime",
+        "target_field" : "apparentTemperatureHighTimeUNIX",
+        "formats" : ["UNIX"],
+        "timezone" : "Phoenix/Arizona"
+      }
+    }
+  ]
+}
+# using the foreach processor to conver multiple fields:
+# Assume the following document:
+{
+  "persons" : [
+    {
+      "id" : "1",
+      "name" : "John Doe"
+    },
+    {
+      "id" : "2",
+      "name" : "Jane Doe"
+    }
+  ]
+}
+# processor:
+{
+  "foreach" : {
+    "field" : "persons",
+    "processor" : {
+      "remove" : {
+        "field" : "_ingest._value.id"
+      }
+    }
+  }
+}
+# after processing:
+{
+  "persons" : [
+    {
+      "name" : "John Doe"
+    },
+    {
+      "name" : "Jane Doe"
+    }
+  ]
+}
+
+# The wrapped processor can have a on_failure definition.
+# For example, the id field may not exist on all person objects.
+#Instead of failing the index request, you can use an on_failure block
+# to send the document to the failure_index index for later inspection:
+
+{
+  "foreach" : {
+    "field" : "persons",
+    "processor" : {
+      "remove" : {
+        "field" : "_value.id",
+        "on_failure" : [
+          {
+            "set" : {
+              "field": "_index",
+              "value": "failure_index"
+            }
+          }
+        ]
+      }
+    }
+  }

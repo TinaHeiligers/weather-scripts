@@ -1,0 +1,6 @@
+1. add a top level date field & use the date in the date array for the value
+2. multiply each time entry by 1000 (changes from epoch_seconds to epoch_millis)
+3. stringify the time values
+4. index the doc/
+
+

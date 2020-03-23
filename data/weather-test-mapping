@@ -1,0 +1,388 @@
+{
+  "weather-test" : {
+    "mappings" : {
+      "properties" : {
+        "currently" : {
+          "properties" : {
+            "apparentTemperature" : {
+              "type" : "float"
+            },
+            "cloudCover" : {
+              "type" : "float"
+            },
+            "dewPoint" : {
+              "type" : "float"
+            },
+            "humidity" : {
+              "type" : "float"
+            },
+            "icon" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              }
+            },
+            "ozone" : {
+              "type" : "float"
+            },
+            "precipIntensity" : {
+              "type" : "float"
+            },
+            "precipProbability" : {
+              "type" : "float"
+            },
+            "precipType" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              }
+            },
+            "pressure" : {
+              "type" : "long"
+            },
+            "summary" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              }
+            },
+            "temperature" : {
+              "type" : "float"
+            },
+            "time" : {
+              "type" : "date",
+              "format": "epoch_millis"
+            },
+            "uvIndex" : {
+              "type" : "long"
+            },
+            "visibility" : {
+              "type" : "float"
+            },
+            "windBearing" : {
+              "type" : "long"
+            },
+            "windGust" : {
+              "type" : "float"
+            },
+            "windSpeed" : {
+              "type" : "float"
+            }
+          }
+        },
+        "daily" : {
+          "properties" : {
+            "data" : {
+              "properties" : {
+                "apparentTemperatureHigh" : {
+                  "type" : "float"
+                },
+                "apparentTemperatureHighTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "apparentTemperatureLow" : {
+                  "type" : "float"
+                },
+                "apparentTemperatureLowTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "apparentTemperatureMax" : {
+                  "type" : "float"
+                },
+                "apparentTemperatureMaxTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "apparentTemperatureMin" : {
+                  "type" : "float"
+                },
+                "apparentTemperatureMinTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "cloudCover" : {
+                  "type" : "float"
+                },
+                "dewPoint" : {
+                  "type" : "float"
+                },
+                "humidity" : {
+                  "type" : "float"
+                },
+                "icon" : {
+                  "type" : "text",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword",
+                      "ignore_above" : 256
+                    }
+                  }
+                },
+                "moonPhase" : {
+                  "type" : "float"
+                },
+                "ozone" : {
+                  "type" : "float"
+                },
+                "precipIntensity" : {
+                  "type" : "float"
+                },
+                "precipIntensityMax" : {
+                  "type" : "float"
+                },
+                "precipIntensityMaxTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "precipProbability" : {
+                  "type" : "float"
+                },
+                "precipType" : {
+                  "type" : "text",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword",
+                      "ignore_above" : 256
+                    }
+                  }
+                },
+                "pressure" : {
+                  "type" : "float"
+                },
+                "summary" : {
+                  "type" : "text",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword",
+                      "ignore_above" : 256
+                    }
+                  }
+                },
+                "sunriseTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "sunsetTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "temperatureHigh" : {
+                  "type" : "float"
+                },
+                "temperatureHighTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "temperatureLow" : {
+                  "type" : "float"
+                },
+                "temperatureLowTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "temperatureMax" : {
+                  "type" : "float"
+                },
+                "temperatureMaxTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "temperatureMin" : {
+                  "type" : "float"
+                },
+                "temperatureMinTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "time" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "uvIndex" : {
+                  "type" : "long"
+                },
+                "uvIndexTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "visibility" : {
+                  "type" : "float"
+                },
+                "windBearing" : {
+                  "type" : "long"
+                },
+                "windGust" : {
+                  "type" : "float"
+                },
+                "windGustTime" : {
+                  "type" : "date",
+                  "format": "epoch_millis"
+                },
+                "windSpeed" : {
+                  "type" : "float"
+                }
+              }
+            }
+          }
+        },
+        "date" : {
+          "type" : "date",
+          "format": "yyyy-MM-dd"
+        },
+        "flags" : {
+          "properties" : {
+            "nearest-station" : {
+              "type" : "float"
+            },
+            "sources" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              }
+            },
+            "units" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              }
+            }
+          }
+        },
+        "hourly" : {
+          "properties" : {
+            "data" : {
+              "properties" : {
+                "apparentTemperature" : {
+                  "type" : "float"
+                },
+                "cloudCover" : {
+                  "type" : "float"
+                },
+                "dewPoint" : {
+                  "type" : "float"
+                },
+                "humidity" : {
+                  "type" : "float"
+                },
+                "icon" : {
+                  "type" : "text",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword",
+                      "ignore_above" : 256
+                    }
+                  }
+                },
+                "ozone" : {
+                  "type" : "float"
+                },
+                "precipIntensity" : {
+                  "type" : "long"
+                },
+                "precipProbability" : {
+                  "type" : "long"
+                },
+                "precipType" : {
+                  "type" : "text",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword",
+                      "ignore_above" : 256
+                    }
+                  }
+                },
+                "pressure" : {
+                  "type" : "float"
+                },
+                "summary" : {
+                  "type" : "text",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword",
+                      "ignore_above" : 256
+                    }
+                  }
+                },
+                "temperature" : {
+                  "type" : "float"
+                },
+                "time" : {
+                  "type" : "text",
+                  "format": "epoch_millis",
+                },
+                "uvIndex" : {
+                  "type" : "long"
+                },
+                "visibility" : {
+                  "type" : "long"
+                },
+                "windBearing" : {
+                  "type" : "long"
+                },
+                "windGust" : {
+                  "type" : "float"
+                },
+                "windSpeed" : {
+                  "type" : "float"
+                }
+              }
+            },
+            "icon" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              }
+            },
+            "summary" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              }
+            }
+          }
+        },
+        "latitude" : {
+          "type" : "float"
+        },
+        "longitude" : {
+          "type" : "float"
+        },
+        "offset" : {
+          "type" : "long"
+        },
+        "timezone" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        }
+      }
+    }
+  }
+}
