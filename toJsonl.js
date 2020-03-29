@@ -37,7 +37,11 @@ const arrayOfConvertedData = dataFileRead.map((element, index) => {
       }
     },
     hourly: {
-      data: element.hourly.data.map(item => item.time = item.time * 1000)
+      data: element.hourly.data.map(item => {
+        let convertedItem = { ...item };
+        convertedItem.time = item.time * 1000;
+        return convertedItem;
+      })
     }
   }
   fs.writeSync(openedDataFile, JSON.stringify(convertedDataItem) + '\n')

@@ -25,7 +25,7 @@
     }
   ]
 }
-# using the foreach processor to conver multiple fields:
+# using the foreach processor to convert multiple fields:
 # Assume the following document:
 {
   "persons" : [
