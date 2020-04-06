@@ -10,7 +10,7 @@ const lat = 33.3560276;
 const long = -111.7443246;
 
 function getDates() {
-  let d = new Date('2011-01-01');
+  let d = new Date('2010-01-01');
   const dateRanges = [];
 
   for (let i = 0; i < 365; i++) {
@@ -23,7 +23,7 @@ function getDates() {
 
 function getWeatherData() {
   const dates = getDates();
-  fs.writeFile('./data/dates_2010.json', JSON.stringify(dates, null, 2));
+  fs.writeFile('./data/dates_2009.json', JSON.stringify(dates, null, 2));
   const weatherDataPromises = [];
 
   for (let i = 0; i <= dates.length; i++) {
@@ -31,6 +31,7 @@ function getWeatherData() {
       .latitude(lat.toString())
       .longitude(long)
       .time(dates[i])
+      .units('si')
       .get()
     )
   }
@@ -42,7 +43,7 @@ function runGetAndWriteWeatherData() {
   const promises = getWeatherData();
 
   Promise.all(promises).then(results => {
-    fs.writeFile('./data/data_2010.json', JSON.stringify(results, null, 2));
+    fs.writeFile('./data/data_2009.json', JSON.stringify(results, null, 2));
     console.log(results)
   })
 };
