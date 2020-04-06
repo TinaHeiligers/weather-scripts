@@ -1,12 +1,13 @@
 const fs = require('file-system')
 const moment = require('moment')
-const dataFileRead = JSON.parse(fs.readFileSync("./data/data_2017.json"));
-const dateFileRead = JSON.parse(fs.readFileSync("./data/dates_2017.json"));
+const year = 2019
+const dataFileRead = JSON.parse(fs.readFileSync(`./data/data_${year}.json`));
+const dateFileRead = JSON.parse(fs.readFileSync(`./data/dates_${year}.json`));
 
-const openedDataForDailyFile = fs.openSync("./data/daily_data_2017.jsonl", "w");
+const openedDataForDailyFile = fs.openSync(`./data/daily_data_${year}.jsonl`, "w");
 
 function convertTimeFromUnixToISO8600(unixTime, offset) {
-  return moment.unix((unixTime) - (offset * 3600)).toISOString()
+  return moment.unix(unixTime).utcOffset(-offset * 60).toISOString()
 };
 
 // TODO: make transformations to the element's elements here.
