@@ -1,0 +1,304 @@
+{
+  "index_patterns": "daily_data_*",
+  "version": 50002,
+  "settings": {
+    "index.refresh_interval": "5s"
+  },
+  "mappings": {
+    "properties": {
+      "@timestamp": {
+        "type": "date"
+      },
+      "@version": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "agent": {
+        "properties": {
+          "ephemeral_id": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "hostname": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "id": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "type": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "version": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          }
+        }
+      },
+      "apparentTemperature": {
+        "type": "float"
+      },
+      "apparentTemperatureHigh": {
+        "type": "float"
+      },
+      "apparentTemperatureHighTime": {
+        "type": "date"
+      },
+      "apparentTemperatureLow": {
+        "type": "long"
+      },
+      "apparentTemperatureLowTime": {
+        "type": "date"
+      },
+      "apparentTemperatureMax": {
+        "type": "float"
+      },
+      "apparentTemperatureMaxTime": {
+        "type": "date"
+      },
+      "apparentTemperatureMin": {
+        "type": "float"
+      },
+      "apparentTemperatureMinTime": {
+        "type": "date"
+      },
+      "cloudCover": {
+        "type": "float"
+      },
+      "date": {
+        "type": "date"
+      },
+      "dewPoint": {
+        "type": "float"
+      },
+      "ecs": {
+        "properties": {
+          "version": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          }
+        }
+      },
+      "host": {
+        "properties": {
+          "name": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          }
+        }
+      },
+      "humidity": {
+        "type": "float"
+      },
+      "icon": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "latitude": {
+        "type": "float"
+      },
+      "log": {
+        "properties": {
+          "file": {
+            "properties": {
+              "path": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              }
+            }
+          },
+          "offset": {
+            "type": "long"
+          }
+        }
+      },
+      "longitude": {
+        "type": "float"
+      },
+      "location": {
+        "type": "geo_point"
+      },
+      "moonPhase": {
+        "type": "float"
+      },
+      "nearestStormBearing": {
+        "type": "long"
+      },
+      "nearestStormDistance": {
+        "type": "long"
+      },
+      "nearest_station": {
+        "type": "float"
+      },
+      "ozone": {
+        "type": "float"
+      },
+      "precipIntensity": {
+        "type": "float"
+      },
+      "precipIntensityMax": {
+        "type": "float"
+      },
+      "precipIntensityMaxTime": {
+        "type": "date"
+      },
+      "precipProbability": {
+        "type": "float"
+      },
+      "precipType": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "pressure": {
+        "type": "float"
+      },
+      "sources": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "summary": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "sunriseTime": {
+        "type": "date"
+      },
+      "sunsetTime": {
+        "type": "date"
+      },
+      "tags": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "temperature": {
+        "type": "float"
+      },
+      "temperatureHigh": {
+        "type": "float"
+      },
+      "temperatureHighTime": {
+        "type": "date"
+      },
+      "temperatureLow": {
+        "type": "float"
+      },
+      "temperatureLowTime": {
+        "type": "date"
+      },
+      "temperatureMax": {
+        "type": "float"
+      },
+      "temperatureMaxTime": {
+        "type": "date"
+      },
+      "temperatureMin": {
+        "type": "float"
+      },
+      "temperatureMinTime": {
+        "type": "date"
+      },
+      "timezone": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "uvIndex": {
+        "type": "long"
+      },
+      "uvIndexTime": {
+        "type": "date"
+      },
+      "visibility": {
+        "type": "float"
+      },
+      "windBearing": {
+        "type": "long"
+      },
+      "windGust": {
+        "type": "float"
+      },
+      "windGustTime": {
+        "type": "date"
+      },
+      "windSpeed": {
+        "type": "float"
+      }
+    }
+  }
+}

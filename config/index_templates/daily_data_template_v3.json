@@ -1,9 +1,11 @@
-PUT _template/daily_data_template
 {
   "index_patterns": "daily_data_*",
-  "version": 50001,
+  "version": 50003,
   "settings": {
     "index.refresh_interval": "5s"
+  },
+  "aliases": {
+    "all_daily_data": {}
   },
   "mappings": {
     "properties": {
@@ -167,6 +169,9 @@ PUT _template/daily_data_template
       },
       "longitude": {
         "type": "float"
+      },
+      "location": {
+        "type": "geo_point"
       },
       "moonPhase": {
         "type": "float"

@@ -1,0 +1,77 @@
+{
+  "index_patterns": [
+    "hourly_data*",
+    "hourly_data_*"
+  ],
+  "version": 1004,
+  "aliases": {
+    "all_hourly_data": {}
+  },
+  "settings": {
+    "index.refresh_interval": "5s"
+  },
+  "mappings": {
+    "properties": {
+      "apparentTemperature": {
+        "type": "float"
+      },
+      "cloudCover": {
+        "type": "float"
+      },
+      "dewPoint": {
+        "type": "float"
+      },
+      "humidity": {
+        "type": "float"
+      },
+      "icon": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "precipIntensity": {
+        "type": "float"
+      },
+      "precipProbability": {
+        "type": "float"
+      },
+      "pressure": {
+        "type": "float"
+      },
+      "summary": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "temperature": {
+        "type": "float"
+      },
+      "time": {
+        "type": "date"
+      },
+      "uvIndex": {
+        "type": "long"
+      },
+      "visibility": {
+        "type": "float"
+      },
+      "windBearing": {
+        "type": "long"
+      },
+      "windGust": {
+        "type": "float"
+      },
+      "windSpeed": {
+        "type": "float"
+      }
+    }
+  }
+}

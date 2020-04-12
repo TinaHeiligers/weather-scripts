@@ -1,0 +1,23 @@
+{
+  "description": "Pipelines for data data wrangling",
+  "processors": [
+    {
+      "pipeline": {
+        "name": "geo_point"
+      }
+    },
+    {
+      "pipeline": {
+        "name": "date_parser"
+      }
+    }
+  ],
+  "on_failure" : [
+    {
+      "set" : {
+        "field" : "error",
+        "value" : "[pipeline][failure_message]:{{_ingest.on_failure_pipeline}};{{ _ingest.on_failure_message }}"
+      }
+    }
+  ]
+}

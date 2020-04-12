@@ -1,0 +1,11 @@
+{
+  "description": "combines latitude and longitude into a new geo-point field",
+  "processors": [
+    {
+      "set": {
+        "field": "location",
+        "value": "{{latitude}},{{longitude}}"
+      }
+    }
+  ]
+}

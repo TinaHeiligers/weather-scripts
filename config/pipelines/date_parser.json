@@ -1,0 +1,22 @@
+{
+  "description": "extracts day, month, year from date field into keywords",
+  "processors": [
+    {
+      "grok": {
+        "field": "date",
+        "patterns": [
+          "%{YEAR:fulldate.year}-%{MONTHNUM:fulldate.month}-%{MONTHDAY:fulldate.monthday}[T]%{HOUR:fulldate.hour}:%{MINUTE:minute}:%{SECOND:second}%{ISO8601_TIMEZONE:timezone}"
+        ]
+      }
+    },
+    {
+      "remove": {
+        "field": [
+          "minute",
+          "second",
+          "timezone"
+        ]
+      }
+    }
+  ]
+}

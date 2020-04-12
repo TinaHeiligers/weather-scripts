@@ -60,6 +60,36 @@ Test this out by running: `bin/logstash -f logstash-simple.conf --config.test_an
 Once the test passes, start up logstash to see the output in stdout:
 `bin/logstash -f logstash-simple.conf --config.reload.automatic`
 
-TODO:
-- [ ] Convert as much data as possible _before_ writing the file to jsonl.
-- [ ] Specify index for logstash to write to.
+
+## Changing mappings and mutating fields
+
+Use a reindex operation to mutate document fields using pipelines. The new index should be created using an updated version of the old indexes' template.
+Steps to reindex using pipelines for field mutations:
+1. Create the pipeline that will do the mutation
+2. Test the pipeline using the `_ingest/pipeline/simulate` API with a representative document that will be reindexed.
+3. Update the index template:
+```
+PUT_template/daily_data_template
+{
+  ....original template _with_ the new fields
+}
+```
+3. Reindex from the old index to the new one:
+```
+POST _reindex
+{
+  "source": {
+    "index": "daily_data_"
+  },
+  "dest": {
+    "index": "daily_data_1",
+    "pipeline": "some_ingest_pipeline"
+  }
+}
+```
+Note: Both the `daily_data_` and the `daily_data_1` indexes match the index defined in the `daily_data_template`.
+
+## Index Aliases
+
+From v3 of the daily_data template, the daily_data_* indices are aliased to `all_daily_data`.
+v3 of the template adds the index alias.
