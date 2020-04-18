@@ -1,6 +1,6 @@
 const fs = require('file-system')
 const moment = require('moment')
-const year = 2020
+const year = 2007
 const dataFileRead = JSON.parse(fs.readFileSync(`./data/data_${year}.json`));
 const dateFileRead = JSON.parse(fs.readFileSync(`./data/dates_${year}.json`));
 
@@ -23,7 +23,6 @@ const arrayOfConvertedDailyDataForYear = dataFileRead.map((element, index) => {
     fs.writeSync(openedDataForHourlyFile, JSON.stringify(datum) + '\n');
     return datum;
   })
-  // fs.writeSync(openedDataForHourlyFile, JSON.stringify(hourlyData) + '\n');
   return hourlyData;
 })
 
