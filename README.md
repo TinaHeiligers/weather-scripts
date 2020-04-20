@@ -83,13 +83,20 @@ POST _reindex
   },
   "dest": {
     "index": "daily_data_1",
-    "pipeline": "some_ingest_pipeline"
+    "pipeline": "daily_data_pipelines"
   }
 }
 ```
-Note: Both the `daily_data_` and the `daily_data_1` indexes match the index defined in the `daily_data_template`.
+Note: Both the `daily_data_` and the `daily_data_1` indices match the index defined in the `daily_data_template`.
+
+## Ingest pipelines
+There are two index pipelines used when reindexing from the original mapping into a new index where the data data date is parsed out. The date is parsed to group the data by month. A new index is created from the reindexed data so that the original data is preserved but the grouped data is comparable.
 
 ## Index Aliases
 
-From v3 of the daily_data template, the daily_data_* indices are aliased to `all_daily_data`.
-v3 of the template adds the index alias.
+From v3 (50003) of the daily_data_template, the daily_data_* indices are aliased to `all_daily_data`.
+v3 (50003, unfortunately the same version as the later version `daily_data_template_v4.json`) of the template adds the index alias.
+
+From v4 (1004) of the hourly_data_template, the hourly_data_* and the hourly_data* indices are aliased to `all_hourly_data`.
+v2 (1001 -> I know, unfortunately nomenclature) of the template adds the index alias.
+AFAIK, hourly data hasn't been reindexed or transformed yet in es. I need to figure out how best to structure the data _after_ deciding how I want to compare it.

@@ -1,10 +1,10 @@
 POST _reindex
 {
   "source": {
-    "index": "source"
+    "index": "daily_data_*"
   },
   "dest": {
-    "index": "dest",
-    "pipeline": "some_ingest_pipeline"
+    "index": "daily_data_1",
+    "pipeline": "daily_data_pipelines"
   }
 }
