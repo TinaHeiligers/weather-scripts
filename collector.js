@@ -1,7 +1,7 @@
 const { config } = require('dotenv');
 const DarkSky = require('dark-sky');
 const fs = require('file-system')
-const year = 2003;
+const year = 1996;
 config({ path: `${__dirname}/.env` });
 
 const darkSky = new DarkSky(process.env.DARK_SKY);
@@ -23,7 +23,7 @@ function getDates() {
 
 function getWeatherData() {
   const dates = getDates();
-  fs.writeFile(`./data/dates_${year}.json`, JSON.stringify(dates, null, 2));
+  fs.writeFile(`./data/raw/dates_${year}.json`, JSON.stringify(dates, null, 2));
   const weatherDataPromises = [];
 
   for (let i = 0; i <= dates.length; i++) {
@@ -43,7 +43,7 @@ function runGetAndWriteWeatherData() {
   const promises = getWeatherData();
 
   Promise.all(promises).then(results => {
-    fs.writeFile(`./data/data_${year}.json`, JSON.stringify(results, null, 2));
+    fs.writeFile(`./data/raw/data_${year}.json`, JSON.stringify(results, null, 2));
     console.log(results)
   })
 };

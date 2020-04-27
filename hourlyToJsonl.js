@@ -1,8 +1,8 @@
 const fs = require('file-system')
 const moment = require('moment')
-const year = 2003
-const dataFileRead = JSON.parse(fs.readFileSync(`./data/data_${year}.json`));
-const dateFileRead = JSON.parse(fs.readFileSync(`./data/dates_${year}.json`));
+const year = 1997;
+const dataFileRead = JSON.parse(fs.readFileSync(`./data/raw/data_${year}.json`));
+const dateFileRead = JSON.parse(fs.readFileSync(`./data/raw/dates_${year}.json`));
 
 const openedDataForHourlyFile = fs.openSync(`./data/hourly_data/hourly_data_${year}.jsonl`, "w");
 
@@ -14,6 +14,7 @@ function convertTimeFromUnixToISO8600(unixTime, offset) {
 const arrayOfConvertedDailyDataForYear = dataFileRead.map((element, index) => {
   if (year !== 2020 && index !== dataFileRead.length - 1) {
     const hourlyData = element.hourly.data.map(datum => {
+
       for (const property in datum) {
         if (property === "time") {
           datum[property] = convertTimeFromUnixToISO8600(datum[property], 7)

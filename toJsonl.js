@@ -1,8 +1,8 @@
 const fs = require('file-system')
 const moment = require('moment')
-const year = 2003
-const dataFileRead = JSON.parse(fs.readFileSync(`./data/data_${year}.json`));
-const dateFileRead = JSON.parse(fs.readFileSync(`./data/dates_${year}.json`));
+const year = 1996;
+const dataFileRead = JSON.parse(fs.readFileSync(`./data/raw/data_${year}.json`));
+const dateFileRead = JSON.parse(fs.readFileSync(`./data/raw/dates_${year}.json`));
 
 // const openedDataForDailyFile = fs.openSync(`./data/daily_data_${year}.jsonl`, "w");
 const openedDataForDailyFile = fs.openSync(`./data/daily_data/daily_data_${year}.jsonl`, "w");
