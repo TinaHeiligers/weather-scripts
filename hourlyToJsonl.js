@@ -1,6 +1,6 @@
 const fs = require('file-system')
 const moment = require('moment')
-const year = 1997;
+const year = 1971;
 const dataFileRead = JSON.parse(fs.readFileSync(`./data/raw/data_${year}.json`));
 const dateFileRead = JSON.parse(fs.readFileSync(`./data/raw/dates_${year}.json`));
 

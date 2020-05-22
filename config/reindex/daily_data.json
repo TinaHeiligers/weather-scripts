@@ -4,7 +4,7 @@ POST _reindex
     "index": "daily_data_*"
   },
   "dest": {
-    "index": "daily_data_1",
+    "index": "daily_data_v2",
     "pipeline": "daily_data_pipelines"
   }
 }

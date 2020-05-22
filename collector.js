@@ -1,7 +1,7 @@
 const { config } = require('dotenv');
 const DarkSky = require('dark-sky');
 const fs = require('file-system')
-const year = 1996;
+const year = 1971;
 config({ path: `${__dirname}/.env` });
 
 const darkSky = new DarkSky(process.env.DARK_SKY);

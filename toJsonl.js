@@ -1,6 +1,6 @@
 const fs = require('file-system')
 const moment = require('moment')
-const year = 1996;
+const year = 1971;
 const dataFileRead = JSON.parse(fs.readFileSync(`./data/raw/data_${year}.json`));
 const dateFileRead = JSON.parse(fs.readFileSync(`./data/raw/dates_${year}.json`));
 
@@ -15,30 +15,33 @@ function convertTimeFromUnixToISO8600(unixTime, offset) {
 const arrayOfConvertedDailyDataForYear = dataFileRead.map((element, index) => {
   if (year !== 2020 && index !== dataFileRead.length - 1) {
     let newDate;
-    for (const property in element.daily.data[0]) {
-      if (property === "time") {
-        newDate = convertTimeFromUnixToISO8600(element.daily.data[0][property], 7);
-      } else if (property.endsWith('Time')) {
-        element.daily.data[0][property] = convertTimeFromUnixToISO8600(element.daily.data[0][property], 7)
+    if (element.daily) {
+      for (const property in element.daily.data[0]) {
+        if (property === "time") {
+          newDate = convertTimeFromUnixToISO8600(element.daily.data[0][property], 7);
+
+        } else if (property.endsWith('Time')) {
+          element.daily.data[0][property] = convertTimeFromUnixToISO8600(element.daily.data[0][property], 7)
+        }
       }
+      const dailyExtractedData = {
+        ...element.currently,
+        nearest_station: element.flags["nearest-station"],
+        latitude: element.latitude,
+        longitude: element.longitude,
+        sources: element.flags.sources,
+        timezone: element.timezone,
+        ...element.daily.data[0],
+        date: newDate
+      }
+      // delete the time key since we now have a date key
+      delete dailyExtractedData.time;
+      fs.writeSync(openedDataForDailyFile, JSON.stringify(dailyExtractedData) + '\n');
+      return dailyExtractedData;
     }
-    const dailyExtractedData = {
-      ...element.currently,
-      nearest_station: element.flags["nearest-station"],
-      latitude: element.latitude,
-      longitude: element.longitude,
-      sources: element.flags.sources,
-      timezone: element.timezone,
-      ...element.daily.data[0],
-      date: newDate
-    }
-    // delete the time key since we now have a date key
-    delete dailyExtractedData.time;
-    fs.writeSync(openedDataForDailyFile, JSON.stringify(dailyExtractedData) + '\n');
-    return dailyExtractedData;
+    const dateForEntrySkipped = convertTimeFromUnixToISO8600(dataFileRead[dataFileRead.length - 1].currently.time, 7)
+    console.log('skipping last entry', dateForEntrySkipped)
   }
-  const dateForEntrySkipped = convertTimeFromUnixToISO8600(dataFileRead[dataFileRead.length - 1].currently.time, 7)
-  console.log('skipping last entry', dateForEntrySkipped)
 });
 
 fs.closeSync(openedDataForDailyFile);
